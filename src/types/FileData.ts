@@ -7,6 +7,7 @@ export interface FileData {
     status: 'ready' | 'transcribing' | 'error';
     createdAt: string;
     updatedAt: string;
+    errorMessage: string;
   };
 
 export {};  

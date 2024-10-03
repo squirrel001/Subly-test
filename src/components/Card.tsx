@@ -17,10 +17,12 @@ const Card: React.FC<CardProps> = ({ file }) => {
         } else if (file.status === 'error') {
             return 'Error in processing';
         } else {
+            // To get time of last Edit, only for files that are Ready
             return `Edited ${formatDistanceToNow(new Date(file.updatedAt))} ago`;
         }
     };
 
+    // Overlay for Transcribing and Error status
     const renderOverlayContent = () => {
         if (file.status === 'transcribing') {
             return (
@@ -33,7 +35,7 @@ const Card: React.FC<CardProps> = ({ file }) => {
                     </div>
                 </div>
             );
-        } else if (file.status === 'error') {// 
+        } else if (file.status === 'error') {
             return (
                 <div className="overlay error">
                     <div className="error">
@@ -50,6 +52,7 @@ const Card: React.FC<CardProps> = ({ file }) => {
         return null;
     };
 
+    // Overlay for Ready
     const renderReadyOverlay = () => {
         if (file.status === 'ready') {
             return (
@@ -65,7 +68,6 @@ const Card: React.FC<CardProps> = ({ file }) => {
         }
         return null;
     };
-
 
     return (
         <div className="card">
